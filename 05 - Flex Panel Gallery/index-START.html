@@ -106,7 +106,8 @@
 			.panel p {
 				text-transform: uppercase;
 				font-family: 'Amatic SC', cursive;
-				text-shadow: 0 0 4px rgba(0, 0, 0, 0.72), 0 0 14px rgba(0, 0, 0, 0.45);
+				text-shadow: 0 0 4px rgba(0, 0, 0, 0.72),
+					0 0 14px rgba(0, 0, 0, 0.45);
 				font-size: 2em;
 			}
 
@@ -164,9 +165,9 @@
 			}
 
 			// listening when a panel is clicked and open it then trigger css once finished...
-			panels.forEach((panel) => panel.addEventListener('click', toggleOpen));
+			panels.forEach(panel => panel.addEventListener('click', toggleOpen));
 			// transitionend will fire and then we toggle open-active
-			panels.forEach((panel) =>
+			panels.forEach(panel =>
 				panel.addEventListener('transitionend', toggleActive)
 			);
 		</script>
