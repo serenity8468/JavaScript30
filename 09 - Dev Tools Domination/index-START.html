@@ -1,46 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Console Tricks!</title>
-</head>
-<body>
+	<head>
+		<meta charset="UTF-8" />
+		<title>Console Tricks!</title>
+	</head>
+	<body>
+		<!-- to view JS code
+click on html tag -- break on -- attribute modifications   -->
+		<p onClick="makeGreen()">×BREAK×DOWN×</p>
 
-  <p onClick="makeGreen()">×BREAK×DOWN×</p>
+		<script>
+			const dogs = [
+				{ name: 'Snickers', age: 2 },
+				{ name: 'hugo', age: 8 },
+			];
 
-  <script>
-    const dogs = [{ name: 'Snickers', age: 2 }, { name: 'hugo', age: 8 }];
+			function makeGreen() {
+				const p = document.querySelector('p');
+				p.style.color = '#BADA55';
+				p.style.fontSize = '50px';
+			}
 
-    function makeGreen() {
-      const p = document.querySelector('p');
-      p.style.color = '#BADA55';
-      p.style.fontSize = '50px';
-    }
+			// Regular
+			console.log('hello');
 
-    // Regular
+			// Interpolated
+			// same a back ticks
+			console.log('Hello I am a  %s string!', '💩');
 
-    // Interpolated
+			// Styled
+			// %c before the text you want to change
+			// second param is the css
+			console.log(
+				'%c I am some great text',
+				'font-size:50px; background:red; text-shadow: 10px 10px 0 blue '
+			);
 
-    // Styled
+			// warning!
+			// give us a warning and tell us the stack trace where it got called
+			console.warn('OH NOO');
 
-    // warning!
+			// Error :|
+			// display an error in console and give us the stack trace
+			console.error('SHIT!');
 
-    // Error :|
+			// Info
+			console.info('Crocodiles eat 3-4 people per year');
 
-    // Info
+			// Testing
+			// check if things are true
+			// will only display in console if something is wrong.
+			console.assert(1 === 1, 'That is wrong!');
+			console.assert(1 === 2, 'That is wrong!');
 
-    // Testing
+			const p = document.querySelector('p');
+			console.assert(p.classList.contains('ouch'), 'That is wrong!');
 
-    // clearing
+			// clearing
+			// clear console
+			console.clear();
 
-    // Viewing DOM Elements
+			// Viewing DOM Elements
+			console.log(p); // show the actual element itself
+			console.dir(p); // show the methods and property on element with a drop down
+			console.clear();
 
-    // Grouping together
+			// Grouping together
+			// can also collapsed if you don't need all the info to appear
+			dogs.forEach(dog => {
+				// console.group(`${dog.name}`);
+				console.groupCollapsed(`${dog.name}`);
+				console.log(`This is ${dog.name}`);
+				console.log(`${dog.name} is ${dog.age} years old`);
+				console.log(`${dog.name} is ${dog.age * 7} dog years old`);
+				console.groupEnd(`${dog.name}`);
+			});
+			console.clear();
 
-    // counting
+			// counting
+			// will count how many times you use something at that time
+			console.count('Kathleen');
+			console.count({});
+			console.count([]);
+			console.count('Drew');
+			console.count('Weezy');
+			console.count(1);
+			console.count('Drew');
+			console.count('Weezy');
+			console.count('Kathleen');
 
-    // timing
+			// timing
+			// if you want to see how long something takes
+			console.time('fetching data');
+			fetch('https://api.github.com/users/serenity8468')
+				.then(data => data.json())
+				.then(data => {
+					console.timeEnd('fetching data');
+					console.log(data);
+				});
 
-  </script>
-</body>
+			//table
+			// take an array of objects and display in a table
+			console.table(dogs);
+		</script>
+	</body>
 </html>
