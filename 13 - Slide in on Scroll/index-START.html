@@ -262,11 +262,19 @@
 					// console.log(window.scrollY);
 
 					// give us the pixel where the image should be slid in at
+					// half way through the image
 					const slideInAt =
 						window.scrollY + window.innerHeight - image.height / 2;
 					// console.log(slideInAt);
 
 					// if we scroll pass the image it should slide itself back out
+					// bottom of the image
+					const imageBottom = image.offsetTop + image.height;
+
+					// check if the image is half shown
+					const isHalfShown = slideInAt > image.offsetTop;
+
+					// if we arent scrolled pass the image
 				});
 			}
 
