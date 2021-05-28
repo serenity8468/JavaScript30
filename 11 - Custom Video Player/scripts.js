@@ -35,14 +35,19 @@ function skip() {
 
 function handleRangeUpdate() {
 	video[this.name] = this.value; // volume or playBackRate
-	console.log('value', this.value);
-	console.log('name', this.name);
+	// console.log('value', this.value);
+	// console.log('name', this.name);
 }
 
+function handleProgress() {
+	const percent = (video.currentTime / video.duration) * 100;
+	progressBar.style.flexBasis = `${percent}%`;
+}
 /* Hook up event listeners */
 video.addEventListener('click', togglePlay);
 video.addEventListener('play', updateButton);
 video.addEventListener('pause', updateButton);
+video.addEventListener('timeupdate', handleProgress); // check when the video is updating it's time code
 
 toggle.addEventListener('click', togglePlay);
 skipButtons.forEach(button => button.addEventListener('click', skip));
