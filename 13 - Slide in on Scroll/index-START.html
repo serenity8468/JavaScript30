@@ -257,7 +257,17 @@
 			const sliderImages = document.querySelectorAll('.slide-in');
 
 			function checkSlide(e) {
-				console.count(e);
+				sliderImages.forEach(image => {
+					// lets us know how far we've scrolled down from the top of browser
+					// console.log(window.scrollY);
+
+					// give us the pixel where the image should be slid in at
+					const slideInAt =
+						window.scrollY + window.innerHeight - image.height / 2;
+					// console.log(slideInAt);
+
+					// if we scroll pass the image it should slide itself back out
+				});
 			}
 
 			window.addEventListener('scroll', debounce(checkSlide), 500);
